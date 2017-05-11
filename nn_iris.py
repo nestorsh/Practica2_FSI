@@ -89,7 +89,7 @@ while True:
     epoca += 1
     print "----------------------------------------------------------------------------------"
 
-    if(abs(errorAnterior-error) < 0.0001 and epoca > 10):
+    if(abs(errorAnterior-error) < 0.0001 ):
         break
     array.append(error)
     errorAnterior=error
@@ -109,9 +109,8 @@ for b, r in zip(y_test, resultTest):
     if b.argmax() != r.argmax():
         errorsTest += 1
     total+=1
-errorTest=sess.run(loss, feed_dict={x: x_test, y_: y_test})
+
 
 print('Fallos:',errorsTest)
-total=float(errorsTest/total*100)
-print('Porcentaje fallos:', total)
-print('Error:',errorTest)
+total=(1-float(errorsTest/total))*100
+print('Porcentaje aciertos:', total)

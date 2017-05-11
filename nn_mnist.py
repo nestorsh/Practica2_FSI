@@ -111,12 +111,12 @@ for b, r in zip(test_y, resultTest):
     if b.argmax() != r.argmax():
         errorsTest += 1
     total+=1
-errorTest = sess.run(loss, feed_dict={x: test_x, y_: test_y})
+
 
 print('Fallos:', errorsTest)
-total=float(errorsTest/total*100)
-print('Porcentaje fallos:', total)
-print('Error:', errorTest)
+total=(1-float(errorsTest/total))*100
+print('Porcentaje aciertos:', total)
+
 
 
 plt.plot(array)
